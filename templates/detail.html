@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{%block content%}
+    <div class="entry-list single">
+        <article>
+            <h1>{{ entry.title }}</h1>
+            <time datetime="{{ entry.timestamp }}"
+                >{{ entry.timestamp.strftime("%m/%d/%Y") }}</time>
+            <div class="entry">
+                <h3>Time Spent: </h3>
+                <p>{{ entry.timespent}}</p>
+            </div>
+            <div class="entry">
+                <h3>What I Learned:</h3>
+                <p>{{ entry.stuff_learned }}</p>
+            </div>
+            <div class="entry">
+                {% if entry.resources_to_remember %}
+                <h3>Resources to Remember:</h3>
+                <p>{{ entry.resources_to_remember }}</p>
+                {%endif%}
+            </div>
+        </article>
+    </div>
+</div>
+<div class="edit">
+    <p><a href="/entries/{{ entry.entry_id }}/edit">Edit Entry</a></p>
+    <p><a href="/entries/{{ entry.entry_id }}/delete">Delete Entry</a></p>
+</div>
+{{ super() }}
+{%endblock%}

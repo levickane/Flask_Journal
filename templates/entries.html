@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% for entry in entries %}
+    <article>
+        <h2><a href="/entries/{{ entry.entry_id }}">{{ entry.title }}</a></h2>
+        <time datetime="{{ entry.timestamp }}"
+            >{{ entry.timestamp.date().strftime("%B %d, %Y") }}</time>
+    </article>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="edit-entry">
+    <h2>Edit Entry</h2>
+    <form method="POST" action="/entries/{{ entry.entry_id }}/edit">
+        {{ form.hidden_tag() }}
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" value="{{ entry.title }}"
+            ><br>
+        <label for="time-spent">Time Spent (in minutes)</label>
+        <input id="time-spent" type="text" name="timespent" 
+            value="{{ entry.timespent }}"><br>
+        <label for="what-i-learned">Stuff I learned</label>
+        <textarea id="what-i-learned" rows="5" name="stuff_learned"
+            >{{ entry.stuff_learned }}</textarea>
+        <label for="resources-to-remember">Resources to Remember</label>
+        <textarea id="resources-to-remember" rows="5" 
+            name="resources_to_remember">{{ entry.resources_to_remember }}
+            </textarea>
+        <button class="button" type="submit" id="submit">Publish Entry
+            </button>
+        <a href="/entries/{{ entry.entry_id }}" 
+            class="button button-secondary">Cancel</a> 
+    </form>
+</div>
+{%endblock%}
